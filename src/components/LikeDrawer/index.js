@@ -39,7 +39,7 @@ function LikeDrawer() {
                 pid: productId
             }
             const response = await LikeProduct(body);
-
+            actions.like.setLike(response?.data?.data?.length);
         }
         catch (error) {
             console.log(error)

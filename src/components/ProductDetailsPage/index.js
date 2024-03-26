@@ -13,7 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAddToCartMutation, useGetCartProductQuery } from "../../api/Cart";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { actions } from "../../redux/store";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import {
   useGetLikeProductQuery,
   useGetProductQuery,
@@ -118,6 +118,7 @@ const ProductDetails = () => {
       try {
         const response = await AddToCart(body);
         const { statusCode, message } = response?.data;
+        actions.cart.setCart(response?.data?.data?.length);
         if (statusCode === 200) {
           toast.success(message);
         } else {

@@ -64,6 +64,7 @@ function CartDrawer() {
 
   useEffect(() => {
     setCartProductData(CartProductApiData?.data?.cartProducts);
+    actions.cart.setCart(CartProductApiData?.data?.cartProducts?.length);
     setCartTotalSummary(CartProductApiData?.data);
   }, [CartProductApiData]);
 

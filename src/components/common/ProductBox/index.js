@@ -7,13 +7,14 @@ import {
   useGetLikeProductQuery,
   useLikeProductMutation,
 } from "../../../api/Product";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { actions } from "../../../redux/store";
 import LoginAlertModal from "../LoginAlertModal";
 import StarIcon from "@mui/icons-material/Star";
 
 export default function ProductBox({ productItem, LikeProductApiData }) {
+  console.log(LikeProductApiData?.data?.length, "LikeProductApiData");
   const [LikeProduct, { isLoading }] = useLikeProductMutation();
 
   console.log(productItem, "productItemproductItem");
@@ -21,6 +22,10 @@ export default function ProductBox({ productItem, LikeProductApiData }) {
   const [showLikeButton, setShowLikeButton] = useState(
     LikeProductApiData?.data?.includes(productItem?._id)
   );
+
+  useEffect(() => {
+    actions.like.setLike(LikeProductApiData?.data?.length);
+  }, [LikeProductApiData]);
 
   const [categoryList, setCategoryList] = useState();
 
@@ -56,6 +61,8 @@ export default function ProductBox({ productItem, LikeProductApiData }) {
           pid: productId,
         };
         const response = await LikeProduct(body);
+        actions.like.setLike(response?.data?.data.length);
+        console.log(response?.data?.data.length, "responseresponse");
       } catch (error) {
         console.log(error);
         setShowLikeButton(showLikeButton);
