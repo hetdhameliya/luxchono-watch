@@ -1,0 +1,185 @@
+@import "../../../constants/color";
+
+.noti {
+
+    .MuiDialog-paper {
+        background-color: $white !important;
+        color: white !important;
+        border: 1px solid #A9A9A9 !important;
+        border-radius: 12px;
+        max-width: 800px !important;
+        max-height: 600px !important;
+    }
+
+    .MuiDialogContent-root {
+        padding: 15px 15px !important;
+    }
+
+    .noti_main_div {
+
+        .noti_heading_div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+
+            .div_heading {
+                font-size: 16px;
+                color: black;
+                font-weight: 600;
+            }
+
+            .heading_icon {
+                font-size: 25px;
+                color: $primary;
+            }
+
+            .heading_close {
+                .close_icon {
+                    color: black;
+                    font-size: 23px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+        .noti_body {
+            margin-top: 1rem;
+
+            .noti_box {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+                width: 100%;
+                min-height: 4rem;
+                border-radius: 12px;
+                display: flex;
+                gap: 5px;
+
+
+                .noti_icon_box {
+                    width: 10rem;
+                    background-color: $primary;
+                    border-radius: 12px 00px 00px 12px !important;
+                }
+
+                .noti_dec_box {
+                    padding: 5px;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 1px;
+
+                    .noti_dec_title {
+                        font-size: 15px;
+                        color: black;
+                        font-weight: 600;
+                    }
+
+                    .noti_dec_info {
+                        font-size: 13px;
+                        color: black;
+
+                    }
+
+                    .noti_dec_date_div {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 3px;
+
+                        .noti_dec_date {
+                            color: gray;
+                            font-weight: 600;
+                            font-size: 13px;
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        .not_found_title{
+            font-size: 19px;
+            color: black;
+        }
+
+        .not_icon{
+            font-size: 35px;
+            color: $primary;
+        }
+
+    }
+
+
+
+    @media (max-width: 700px) {
+
+        .noti_heading_div {
+
+
+            .div_heading {
+                font-size: 14px !important;
+            }
+
+            .heading_icon {
+                font-size: 20px !important;
+            }
+
+            .heading_close {
+                .close_icon {
+                    font-size: 18px !important;
+                }
+            }
+        }
+
+        .noti_inner_icon {
+            font-size: 24px !important;
+        }
+
+        .noti_body {
+            .noti_box {
+                .noti_icon_box {
+                    width: 12rem !important;
+                }
+
+                .noti_dec_box {
+
+                    .noti_dec_title {
+                        font-size: 13px !important;
+                    }
+
+                    .noti_dec_info {
+                        font-size: 11px !important;
+                    }
+
+                    .noti_dec_date_div {
+                        .noti_dec_date {
+                            font-size: 11px !important;
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        .not_found_title{
+            font-size: 15px !important;
+        }
+
+        .not_icon{
+            font-size: 30px !important;
+        }
+
+        .notfound_div{
+            width: 200px !important;
+            height: 100px !important;
+        }
+        .loading_div{
+            width: 200px !important;
+            height: 100px !important; 
+        }
+
+    }
+
+}

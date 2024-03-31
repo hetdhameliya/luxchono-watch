@@ -26,6 +26,7 @@ import LikeDrawer from "../LikeDrawer";
 import { useSelector } from "react-redux";
 import CartDrawer from "../CartDrawer";
 import "./style.scss";
+import NotificationModal from "../common/NotificationModal";
 
 const drawerWidth = 240;
 
@@ -105,6 +106,16 @@ function DrawerAppBar(props) {
             <ListItemText primary={"Order"} />
           </ListItemButton>
         </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{ textAlign: "center" }}
+            onClick={() => actions.modal.openNotificattionModal()}
+          >
+            <ListItemText primary={"Notification"} />
+          </ListItemButton>
+        </ListItem>
+
         {token && (
           <ListItem disablePadding>
             <ListItemButton
@@ -277,6 +288,14 @@ function DrawerAppBar(props) {
                 >
                   {"Order"}
                 </Button>
+
+                <Button
+                  onClick={() => actions.modal.openNotificattionModal()}
+                  className={`!text-secondary`}
+                >
+                  {"Notification"}
+                </Button>
+
                 {token && (
                   <Button
                     className={`!text-secondary ${
@@ -370,6 +389,7 @@ function DrawerAppBar(props) {
       </Box>
       <LikeDrawer />
       <CartDrawer />
+      <NotificationModal />
     </>
   );
 }

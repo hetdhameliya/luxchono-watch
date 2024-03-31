@@ -387,7 +387,7 @@ const ProductDetails = () => {
                               fontSize: "14px",
                               width: "6.7rem",
                               display: "flex",
-                              justifyContent: "end",
+                              justifyContent: " end",
                             }}
                           >
                             {" "}
