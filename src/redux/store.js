@@ -13,6 +13,7 @@ import { CartApi } from "../api/Cart";
 import { AddressApi } from "../api/Address";
 import { OrderApi } from "../api/Order";
 import { NotificationApi } from "../api/Notification";
+import { UserRatingApi } from "../api/UserRating";
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ export const store = configureStore({
     [AddressApi.reducerPath]: AddressApi.reducer,
     [OrderApi.reducerPath]: OrderApi.reducer,
     [NotificationApi.reducerPath] : NotificationApi.reducer,
+    [UserRatingApi.reducerPath] : UserRatingApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -39,6 +41,7 @@ export const store = configureStore({
       .concat(AddressApi.middleware)
       .concat(OrderApi.middleware)
       .concat(NotificationApi.middleware)
+      .concat(UserRatingApi.middleware)
 });
 
 setupListeners(store.dispatch);

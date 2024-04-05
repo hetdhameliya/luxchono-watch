@@ -10,8 +10,9 @@ import Textareas from "../Textarea";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Buttons from "../Buttons";
-import { useRatingMutation } from "../../../api/Rating";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
+import { useAddRatingMutation } from "../../../api/UserRating";
+import { FlashOnRounded } from "@mui/icons-material";
 
 export default function RatingModal() {
   const DialogOpen = useSelector((state) => state.modal.Rating);
@@ -22,11 +23,11 @@ export default function RatingModal() {
 
   const [ratingValue, setRatingValue] = useState(null);
 
+  const [AddRating, isloading] = useAddRatingMutation();
+
   const onRatingChange = (event, newValue) => {
     setRatingValue(newValue); // Update local state
   };
-
-  const [AddRating, { isLoading }] = useRatingMutation();
 
   const Ratings = useFormik({
     initialValues: {
@@ -40,15 +41,16 @@ export default function RatingModal() {
     }),
 
     onSubmit: async (values) => {
-      actions.loder.setLoading(true);
       const body = {
         product: DialogOpen?.data?.product?._id,
         description: values?.description,
         star: ratingValue,
       };
+
+      actions.loder.setLoading(true);
       try {
         const response = await AddRating(body);
-        const { statusCode, message } = await response?.data;
+        const { statusCode, message } = response?.data;
         if (statusCode === 200) {
           toast.success(message);
           onCancel();
@@ -75,7 +77,7 @@ export default function RatingModal() {
       aria-describedby="alert-dialog-description"
       className="rating"
     >
-      <form onSubmit={Ratings.handleSubmit}>
+      <form>
         <div className="rating_content">
           <DialogContent>
             <div className="rating_div">
@@ -105,7 +107,7 @@ export default function RatingModal() {
 
             <div style={{ marginTop: "1.4rem" }}>
               <Buttons
-                type={"submit"}
+                onClick={Ratings.handleSubmit}
                 text={"Add"}
                 variant={"contained"}
                 className={"addButton"}
