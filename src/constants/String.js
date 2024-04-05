@@ -42,11 +42,15 @@ export const STRING = {
   REGISTER_PHONNO_PLACEHOLDER: "Enter Phon Number",
   REGISTER_PHONNO_REQUIRED: "Phon Number is required",
   FORGOT_PASSWORD_LINK: "Forgot password?",
-  INVALID_NUMBER : "Invalid phone number",
+  INVALID_NUMBER: "Invalid phone number",
   PAASWORD_STORANGE:
     "Password must contain at least one digit, one lowercase character, and one uppercase character. Minimum length is 8 characters",
   USER_NAME_STORANGE:
     "Username must be 3-8 characters, alphanumeric, with at least 2 letters",
+  FULL_NAME: "Full name must contain at least 6 characters",
+  ADDRESS_FORMAT: "Address must contain at least 20 characters",
+  CITY_FORMAT: "City Name must be at least 2 characters long",
+  PIN_FORMAT: "Pincode must be at least 6 characters long",
 
   NOW_GOTO_LOGIN: "Now go to Login",
   CHECK_MAIL_BOX: "Check your mail",

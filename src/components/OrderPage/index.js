@@ -301,20 +301,28 @@ export default function OrderPage() {
                             })}
                           </Grid>
 
-                          <div
-                            style={{ display: "flex", justifyContent: "right" }}
-                          >
-                            <button className="pdf_download" onClick={() => {}}>
-                              <PDFDownloadLink
-                                document={<OrderPdf orderData={order} />}
-                                fileName="Luxchono_Order.pdf"
+                          {order?.status !== "Cancelled" && (
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "right",
+                              }}
+                            >
+                              <button
+                                className="pdf_download"
+                                onClick={() => {}}
                               >
-                                {({ blob, url, loading, error }) =>
-                                  loading ? "Loading..." : "Download Order"
-                                }
-                              </PDFDownloadLink>
-                            </button>
-                          </div>
+                                <PDFDownloadLink
+                                  document={<OrderPdf orderData={order} />}
+                                  fileName="Luxchono_Order.pdf"
+                                >
+                                  {({ blob, url, loading, error }) =>
+                                    loading ? "Loading..." : "Download Order"
+                                  }
+                                </PDFDownloadLink>
+                              </button>
+                            </div>
+                          )}
                         </AccordionDetails>
                       </Accordion>
                     </>

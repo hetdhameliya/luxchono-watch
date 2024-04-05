@@ -20,7 +20,7 @@ import {
   useAddAddressMutation,
   useEditAddressMutation,
 } from "../../../api/Address";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import { STRING } from "../../../constants/String";
 function AddAddressDrawer() {
   const DialogOpen = useSelector((state) => state.modal.AddAddress);
@@ -78,20 +78,30 @@ function AddAddressDrawer() {
     },
 
     validationSchema: Yup.object().shape({
-      fullName: Yup.string().trim().required("Full Name is Requried"),
+      fullName: Yup.string()
+        .trim()
+        .required("Full Name is Requried")
+        .min(6, STRING.FULL_NAME),
       phoneNo: Yup.string()
         .required("Phone Number is Requried")
         .matches(REGEX.PHONNUMBER, STRING.INVALID_NUMBER),
       state: Yup.string().trim().required("State is Required"),
-      city: Yup.string().trim().required("City is Requried"),
-      address: Yup.string().trim().required("Address is Required"),
+      city: Yup.string()
+        .trim()
+        .required("City is Requried")
+        .min(2, STRING.CITY_FORMAT),
+      address: Yup.string()
+        .trim()
+        .required("Address is Required")
+        .min(20, STRING.ADDRESS_FORMAT),
       addressType: Yup.string().trim().required("Address type is Requried"),
       pincode: Yup.number()
         .required("Pincode is Required")
         .test(
           "Enter valid Pincode number",
           (value) => !value || REGEX.PINCODE.test(value.toString())
-        ),
+        )
+        .min(6, STRING.PIN_FORMAT),
     }),
 
     onSubmit: async (values) => {
