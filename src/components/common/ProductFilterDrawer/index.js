@@ -191,7 +191,7 @@ function ProductFilterDrawer(
                             <div className='flex flex-col gap-[5px] mt-[0.5rem]'>
                                 <span className='text-black sprice flex items-center gap-[5px]'>
                                     <span className='text-[13px]'>{"Start price "}</span>
-                                    <span className='text-[14px] text-lighttext'>${priceRange[0]}</span>
+                                    <span className='text-[14px] text-lighttext'>₹{priceRange[0]}</span>
                                 </span>
                                 <div className='flex items-center justify-center'>
                                     <Slider
@@ -208,7 +208,7 @@ function ProductFilterDrawer(
 
                                 <span className='text-black eprice flex items-center gap-[5px]'>
                                     <span className='text-[13px]'>{"End price"}</span>
-                                    <span className='text-[14px] text-lighttext'>${priceRange[1]}</span>
+                                    <span className='text-[14px] text-lighttext'>₹{priceRange[1]}</span>
                                 </span>
                             </div>
                         </div>
